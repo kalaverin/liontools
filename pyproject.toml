@@ -49,8 +49,8 @@ keywords = [
 license = {text = "GNU General Public License v3 or later (GPLv3+)"}
 name = "liontools"
 readme = "README.md"
-requires-python = ">=3.8"
-version = "0.0.1"
+requires-python = ">=3.9"
+version = "0.0.2"
 
 [project.scripts]
 branches-rename = "liontools.runner:branches_rename"
@@ -90,13 +90,6 @@ liontools = [
 
 [tool.uv]
 package = true
-
-[tool.versioneer]
-VCS = "git"
-parentdir_prefix = ""
-style = "pep440"
-tag_prefix = ""
-versionfile_source = "pyproject.toml"
 
 [tool.yamlfix]
 line_length = 89

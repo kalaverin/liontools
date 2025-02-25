@@ -5,7 +5,7 @@ ci:
   autoupdate_schedule: monthly
 
 default_language_version:
-  python: python3.8
+  python: python3.9
 
 fail_fast: true
 
@@ -15,6 +15,10 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
+      - id: forbid-submodules
+      - id: check-executables-have-shebangs
+      - id: check-symlinks
+      - id: check-json
       - id: check-toml
       - id: check-yaml
       - id: check-added-large-files
@@ -28,7 +32,10 @@ repos:
       - id: mixed-line-ending
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: pretty-format-json
+      - id: requirements-txt-fixer
       - id: double-quote-string-fixer
+      - id: name-tests-test
   - repo: https://github.com/sirosen/texthooks
     rev: 0.6.8
     hooks:
@@ -38,6 +45,9 @@ repos:
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.14.0
     hooks:
+      - id: pretty-format-ini
+        args:
+          - --autofix
       - id: pretty-format-toml
         args:
           - --autofix
@@ -61,6 +71,12 @@ repos:
     hooks:
       - id: remove-crlf
       - id: remove-tabs
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.1
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py39-plus
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
     hooks:
@@ -87,12 +103,25 @@ repos:
       - id: python-check-blanket-noqa
       - id: python-check-blanket-type-ignore
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.6
+    rev: v0.9.7
     hooks:
       - id: ruff
         args:
           - --config=pyproject.toml
+  # - repo: https://github.com/dosisod/refurb
+  #   rev: v2.0.0
+  #   hooks:
+  #     - id: refurb
+  # - repo: https://github.com/kalaverin/radon
+  #   rev: 0.2.1
+  #   hooks:
+  #     - id: radon
+  #       args:
+  #         - --warn-time=120
+  #         - --error-effort=2000
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.5.14
+    rev: 0.6.3
     hooks:
       - id: uv-lock
+        args:
+          - --locked
