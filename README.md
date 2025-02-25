@@ -5,7 +5,7 @@ Assorted git-related scripts and tools
 
 Easy Usage
 ----------
-uvx --from liontools restore-mtime
+	uvx --from liontools restore-mtime  # try to use Astral "uv" tool!
 
 Requirements
 ------------
