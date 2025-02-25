@@ -3,6 +3,9 @@ Git Tools
 
 Assorted git-related scripts and tools
 
+Easy Usage
+----------
+uvx --from liontools restore-mtime
 
 Requirements
 ------------
